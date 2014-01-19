@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{libraryClientBean.addMember()}</from-action>
+            <from-outcome>ADD</from-outcome>
+            <to-view-id>/addRecord.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{libraryClientBean.editMember()}</from-action>
+            <from-outcome>EDIT</from-outcome>
+            <to-view-id>/editRecord.xhtml</to-view-id>
+        </navigation-case>       
+        <navigation-case>
+            <from-action>#{libraryClientBean.addBook()}</from-action>
+            <from-outcome>ADD</from-outcome>
+            <to-view-id>/addRecord.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{libraryClientBean.editBook()}</from-action>
+            <from-outcome>EDIT</from-outcome>
+            <to-view-id>/editRecord.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{libraryClientBean.addLoan()}</from-action>
+            <from-outcome>ADD</from-outcome>
+            <to-view-id>/addRecord.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{libraryClientBean.editLoan()}</from-action>
+            <from-outcome>EDIT</from-outcome>
+            <to-view-id>/editRecord.xhtml</to-view-id>
+        </navigation-case> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id >/editRecord.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{editRecordBean.updateMember()}</from-action>
+            <from-outcome>UPDATE</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{editRecordBean.updateBook()}</from-action>
+            <from-outcome>UPDATE</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id >/addRecord.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{addRecordBean.insertMember()}</from-action>
+            <from-outcome>INSERT</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{addRecordBean.insertBook()}</from-action>
+            <from-outcome>INSERT</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{addRecordBean.insertLoan()}</from-action>
+            <from-outcome>INSERT</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>         
+    </navigation-rule>   
+</faces-config>

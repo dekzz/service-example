@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Library Client</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="Members" action="#{libraryClientBean.changeVisibilityMembers()}"/>
+            <h:dataTable value="#{libraryClientBean.listMembers}" var="m" rendered="#{libraryClientBean.visibleMembers}" border="1">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{m.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">First name</f:facet>
+                    <h:outputText value="#{m.firstname}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last name</f:facet>
+                    <h:outputText value="#{m.lastname}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{m.email}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Edit" action="#{libraryClientBean.editMember()}">
+                        <f:setPropertyActionListener target="#{libraryClientBean.id}" value="#{m.id}" />
+                    </h:commandButton>
+                    <h:commandButton value="Delete" action="#{libraryClientBean.removeMember()}">
+                        <f:setPropertyActionListener target="#{libraryClientBean.id}" value="#{m.id}" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable> 
+            <h:commandButton value="Add member" rendered="#{libraryClientBean.visibleMembers}" action="#{libraryClientBean.addMember()}"/>
+            <hr/>
+            <h:commandButton value="Books" action="#{libraryClientBean.changeVisibilityBooks()}"/>
+            <h:dataTable value="#{libraryClientBean.listBooks}" var="b" rendered="#{libraryClientBean.visibleBooks}" border="1">
+                <h:column>
+                    <f:facet name="header">ISBN</f:facet>
+                    <h:outputText value="#{b.isbn}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                    <h:outputText value="#{b.title}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Author</f:facet>
+                    <h:outputText value="#{b.author}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Available</f:facet>
+                    <h:outputText value="#{b.available}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Edit" action="#{libraryClientBean.editBook()}">
+                        <f:setPropertyActionListener target="#{libraryClientBean.isbn}" value="#{b.isbn}" />
+                    </h:commandButton>
+                    <h:commandButton value="Delete" action="#{libraryClientBean.removeBook()}">
+                        <f:setPropertyActionListener target="#{libraryClientBean.isbn}" value="#{b.isbn}" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Add book" rendered="#{libraryClientBean.visibleBooks}" action="#{libraryClientBean.addBook()}"/><hr/>
+            <h:commandButton value="Loan" action="#{libraryClientBean.changeVisibilityLoan()}"/>
+            <h:dataTable value="#{libraryClientBean.listLoans}" var="l" rendered="#{libraryClientBean.visibleLoan}" border="1">
+                <h:column>
+                    <f:facet name="header">ISBN</f:facet>
+                    <h:outputText value="#{l.isbn}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{l.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Loan date</f:facet>
+                    <h:outputText value="#{l.loandate}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Delete" action="#{libraryClientBean.removeLoan()}">
+                        <f:setPropertyActionListener target="#{libraryClientBean.isbn}" value="#{l.isbn}" />
+                        <f:setPropertyActionListener target="#{libraryClientBean.id}" value="#{l.id}" />
+                    </h:commandButton>
+                </h:column>                
+            </h:dataTable>
+            <h:commandButton value="Add loan" rendered="#{libraryClientBean.visibleLoan}" action="#{libraryClientBean.addLoan()}"/><hr/>
+        </h:form>
+    </h:body>
+</html>
+
